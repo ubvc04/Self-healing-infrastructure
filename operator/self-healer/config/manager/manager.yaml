@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self-healer-controller-manager
+  namespace: self-healer-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: self-healer-controller-manager
+  template:
+    metadata:
+      labels:
+        app: self-healer-controller-manager
+    spec:
+      serviceAccountName: self-healer-controller-manager
+      containers:
+      - name: manager
+        image: ghcr.io/YOUR_ORG/self-healer-operator:latest
+        command:
+        - /manager
+        args:
+        - --leader-elect=true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi

@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../namespace.yaml
+- ../rabbitmq.yaml
+- ../api/k8s/deployment.yaml
+- ../api/k8s/ingress.yaml
+- ../api/k8s/hpa.yaml
+- ../worker/k8s/deployment.yaml
+- ../../platform/autoscaling/keda/trigger-auth.yaml
+- ../../platform/autoscaling/keda/scaled-object.yaml

@@ -1,0 +1,13 @@
+apiVersion: platform.example.com/v1alpha1
+kind: HealingPolicy
+metadata:
+  name: apps-healing-policy
+  namespace: self-healer-system
+spec:
+  namespace: apps
+  deploymentName: queue-worker
+  podLabelSelector: "app=queue-worker"
+  restartThreshold: 3
+  scaleUpStep: 1
+  maxReplicas: 20
+  unhealthyPodTarget: 1

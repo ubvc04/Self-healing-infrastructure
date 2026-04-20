@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: rabbitmq-trigger-auth
+  namespace: apps
+spec:
+  secretTargetRef:
+  - parameter: username
+    name: rabbitmq-auth
+    key: username
+  - parameter: password
+    name: rabbitmq-auth
+    key: password
+  - parameter: host
+    name: rabbitmq-auth
+    key: host

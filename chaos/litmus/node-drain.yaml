@@ -1,0 +1,20 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: worker-node-drain
+  namespace: litmus
+spec:
+  appinfo:
+    appns: apps
+    applabel: app=queue-worker
+    appkind: deployment
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: node-drain
+    spec:
+      components:
+        env:
+        - name: TOTAL_CHAOS_DURATION
+          value: "120"
+        - name: CHAOS_INTERVAL
+          value: "30"

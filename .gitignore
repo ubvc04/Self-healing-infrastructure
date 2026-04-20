@@ -1,0 +1,15 @@
+# Local environment values
+config/platform.env
+
+# Terraform
+**/.terraform/*
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
+
+# Kubernetes admin file copies
+admin.conf
+
+# OS/editor
+.DS_Store
+Thumbs.db

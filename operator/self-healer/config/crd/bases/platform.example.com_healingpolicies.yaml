@@ -1,0 +1,53 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: healingpolicies.platform.example.com
+spec:
+  group: platform.example.com
+  names:
+    kind: HealingPolicy
+    listKind: HealingPolicyList
+    plural: healingpolicies
+    singular: healingpolicy
+    shortNames:
+    - hp
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            required: [namespace, deploymentName, podLabelSelector, restartThreshold, scaleUpStep, maxReplicas, unhealthyPodTarget]
+            properties:
+              namespace:
+                type: string
+              deploymentName:
+                type: string
+              podLabelSelector:
+                type: string
+              restartThreshold:
+                type: integer
+              scaleUpStep:
+                type: integer
+              maxReplicas:
+                type: integer
+              unhealthyPodTarget:
+                type: integer
+          status:
+            type: object
+            properties:
+              lastRun:
+                type: string
+              lastAction:
+                type: string
+              remediatedPods:
+                type: integer
+              deploymentReplicaSet:
+                type: integer
+    subresources:
+      status: {}

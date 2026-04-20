@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: queue-worker-scaledobject
+  namespace: apps
+spec:
+  scaleTargetRef:
+    name: queue-worker
+  minReplicaCount: 1
+  maxReplicaCount: 20
+  pollingInterval: 15
+  cooldownPeriod: 60
+  authenticationRef:
+    name: rabbitmq-trigger-auth
+  triggers:
+  - type: rabbitmq
+    metadata:
+      protocol: amqp
+      queueName: jobs
+      mode: QueueLength
+      value: "10"

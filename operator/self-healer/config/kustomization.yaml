@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: self-healer-system
+resources:
+- namespace.yaml
+- crd/bases/platform.example.com_healingpolicies.yaml
+- rbac/role.yaml
+- manager/manager.yaml
+- samples/platform_v1alpha1_healingpolicy.yaml
