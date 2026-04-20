@@ -16,7 +16,7 @@ spec:
       serviceAccountName: self-healer-controller-manager
       containers:
       - name: manager
-        image: ghcr.io/YOUR_ORG/self-healer-operator:latest
+        image: ghcr.io/ubvc04/self-healer-operator:699b264aa6184703506b8e55beb1ff5ed129d704
         command:
         - /manager
         args:

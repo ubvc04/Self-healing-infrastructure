@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: ghcr.io/YOUR_ORG/queue-worker:latest
+        image: ghcr.io/ubvc04/queue-worker:699b264aa6184703506b8e55beb1ff5ed129d704
         env:
         - name: RABBITMQ_HOST
           value: rabbitmq.apps.svc.cluster.local

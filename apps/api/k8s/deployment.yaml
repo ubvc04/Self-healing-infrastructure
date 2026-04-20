@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/YOUR_ORG/platform-api:latest
+        image: ghcr.io/ubvc04/platform-api:699b264aa6184703506b8e55beb1ff5ed129d704
         ports:
         - containerPort: 8080
         env:
